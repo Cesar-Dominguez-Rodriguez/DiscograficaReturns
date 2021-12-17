@@ -77,7 +77,7 @@ public class Ctrl_cantante {
     public void listarCantante() {
         CantanteDAO cantanteDAO = new CantanteDAO();
         List<Cantante> listacantante = new ArrayList<>();
-        List<Object> listaobjeto = cantanteDAO.listar();
+        List<Cantante> listaobjeto = cantanteDAO.listarCantante();
         for (Object o : listaobjeto) {
             Cantante c = (Cantante) o;
             listacantante.add(c);

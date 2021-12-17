@@ -75,7 +75,7 @@ public class Ctrl_musico {
     public void listarMusico() {
         MusicoDAO musicoDAO = new MusicoDAO();
         List<Musico> listamusico = new ArrayList<>();
-        List<Object> listaobjeto = musicoDAO.listar();
+        List<Disco> listaobjeto = musicoDAO.listarDisco();
         for (Object o : listaobjeto){
             Musico m = (Musico) o;
             listamusico.add(m);

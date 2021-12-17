@@ -17,6 +17,7 @@ public class DiscoDAO implements DAO{
     @Override
     public Object obtener(String nombreABuscar) {
         EntityManager em = emf.createEntityManager();
+        Disco nuevodisco= new Disco();
         Query query= em.createQuery("select d from Disco d where d.nombre=:nombre");
         query.setParameter("nombre",nombreABuscar);
         Disco d = (Disco) query.getSingleResult();
@@ -51,12 +52,37 @@ public class DiscoDAO implements DAO{
     }
 
     @Override
-    public List<Object> listar() {
+    public void actualizarCantante(Object objeto) {
+
+    }
+
+    @Override
+    public List<Cantante> listarCantante() {
+        return null;
+    }
+
+    @Override
+    public List<Disco> listarDisco() {
         EntityManager em = emf.createEntityManager();
         Query query= em.createQuery("select d from Disco d");
-        List<Object>  listadisco =query.getResultList();
+        List<Disco>  listadisco = query.getResultList();
         em.close();
         return listadisco;
+    }
+
+    @Override
+    public List<Pista> listarPista() {
+        return null;
+    }
+
+    @Override
+    public List<Premio> listarPremio() {
+        return null;
+    }
+
+    @Override
+    public List<Musico> listarMusico() {
+        return null;
     }
 
     @Override

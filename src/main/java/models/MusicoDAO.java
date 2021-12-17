@@ -51,10 +51,35 @@ public class MusicoDAO implements DAO {
     }
 
     @Override
-    public List<Object> listar() {
+    public void actualizarCantante(Object objeto) {
+
+    }
+
+    @Override
+    public List<Cantante> listarCantante() {
+        return null;
+    }
+
+    @Override
+    public List<Disco> listarDisco() {
+        return null;
+    }
+
+    @Override
+    public List<Pista> listarPista() {
+        return null;
+    }
+
+    @Override
+    public List<Premio> listarPremio() {
+        return null;
+    }
+
+    @Override
+    public List<Musico> listarMusico() {
         EntityManager em = emf.createEntityManager();
         Query query= em.createQuery("select m from Musico m");
-        List<Object>  listaMusicos = query.getResultList();
+        List<Musico>  listaMusicos = query.getResultList();
         em.close();
         return listaMusicos;
     }

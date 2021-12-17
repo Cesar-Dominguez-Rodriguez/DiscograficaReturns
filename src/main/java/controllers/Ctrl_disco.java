@@ -85,9 +85,8 @@ public class Ctrl_disco {
     public void listarDisco() {
         DiscoDAO discoDAO = new DiscoDAO();
         List<Disco> listadisco = new ArrayList<>();
-        List<Object> listaobjeto = discoDAO.listar();
-        for (Object o : listaobjeto) {
-            Disco d = (Disco) o;
+        List<Disco> listaobjeto = discoDAO.listarDisco();
+        for (Disco d : listaobjeto) {
             listadisco.add(d);
             System.out.println(d.toString());
         }

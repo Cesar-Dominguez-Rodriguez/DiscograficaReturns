@@ -6,6 +6,7 @@ import javax.persistence.Table;
 import java.util.List;
 
 @Entity
+@DiscriminatorValue(value = "2")
 public class Musico extends Artista{
 
 

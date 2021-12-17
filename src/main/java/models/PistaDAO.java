@@ -51,11 +51,36 @@ public class PistaDAO implements DAO {
     }
 
     @Override
-    public List<Object> listar() {
+    public void actualizarCantante(Object objeto) {
+
+    }
+
+    @Override
+    public List<Cantante> listarCantante() {
+        return null;
+    }
+
+    @Override
+    public List<Disco> listarDisco() {
+        return null;
+    }
+
+    @Override
+    public List<Pista> listarPista() {
         EntityManager em = emf.createEntityManager();
         Query query= em.createQuery("select p from Pista p");
-        List<Object>  listapista =query.getResultList();
+        List<Pista>  listapista =query.getResultList();
         return listapista;
+    }
+
+    @Override
+    public List<Premio> listarPremio() {
+        return null;
+    }
+
+    @Override
+    public List<Musico> listarMusico() {
+        return null;
     }
 
     @Override

@@ -66,9 +66,8 @@ public class Ctrl_premio {
     public void listarPremio() {
         PremioDAO premioDAO = new PremioDAO();
         List<Premio> listapremio = new ArrayList<>();
-        List<Object> listaobjeto = premioDAO.listar();
-        for (Object o : listaobjeto){
-            Premio p = (Premio) o;
+        List<Premio> listaobjeto = premioDAO.listarPremio();
+        for (Premio p : listaobjeto){
             listapremio.add(p);
             System.out.println(p.toString());
         }

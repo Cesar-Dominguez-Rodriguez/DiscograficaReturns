@@ -53,12 +53,37 @@ public class PremioDAO implements DAO {
     }
 
     @Override
-    public List<Object> listar() {
+    public void actualizarCantante(Object objeto) {
+
+    }
+
+    @Override
+    public List<Cantante> listarCantante() {
+        return null;
+    }
+
+    @Override
+    public List<Disco> listarDisco() {
+        return null;
+    }
+
+    @Override
+    public List<Pista> listarPista() {
+        return null;
+    }
+
+    @Override
+    public List<Premio> listarPremio() {
         EntityManager em = emf.createEntityManager();
         Query query= em.createQuery("select p from Premio p");
-        List<Object>  listaPremio = query.getResultList();
+        List<Premio>  listaPremio = query.getResultList();
         em.close();
         return listaPremio;
+    }
+
+    @Override
+    public List<Musico> listarMusico() {
+        return null;
     }
 
     @Override

@@ -9,7 +9,9 @@ import java.util.List;
 @Entity
 @Table(name = "artistas")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Artista {
+@DiscriminatorColumn(name="tipo_artista",discriminatorType=DiscriminatorType.INTEGER)
+@DiscriminatorValue(value="0")
+public abstract class Artista {
 
     @Id
     @Column(name = "idartista")
@@ -41,9 +43,9 @@ public class Artista {
         this.nombreArtistico = nombreArtistico;
         this.salario = salario;
         this.estiloMusical = estiloMusical;
-        this.discos = new ArrayList<>();
-        this.pistas = new ArrayList<>();
-        this.premios = new ArrayList<>();
+        this.discos = new ArrayList<Disco>();
+        this.pistas = new ArrayList<Pista>();
+        this.premios = new ArrayList<Premio>();
     }
 
     public Artista() {
@@ -126,20 +128,5 @@ public class Artista {
     public void eliminarDisco(Disco d) {
         this.discos.remove(d);
         d.setArtista(null);
-    }
-
-    @Override
-    public String toString() {
-        return "Artista{" +
-                "idArtista=" + idArtista +
-                ", dni='" + dni + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", nombreArtistico='" + nombreArtistico + '\'' +
-                ", salario=" + salario +
-                ", estiloMusical='" + estiloMusical + '\'' +
-                ", discos=" + discos +
-                ", pistas=" + pistas +
-                ", premios=" + premios +
-                '}';
     }
 }

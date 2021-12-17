@@ -66,7 +66,7 @@ public class Ctrl_pista {
     public void listarPista() {
         PistaDAO pistaDAO = new PistaDAO();
         List<Pista> listapista = new ArrayList<>();
-        List<Object> listaobjeto = pistaDAO.listar();
+        List<Pista> listaobjeto = pistaDAO.listarPista();
         for (Object o : listaobjeto){
             Pista p = (Pista) o;
             listapista.add(p);

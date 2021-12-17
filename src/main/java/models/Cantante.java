@@ -4,8 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-//@Table(name= "cantantes")
-//@DiscriminatorValue(value = "1")
+@DiscriminatorValue(value = "1")
 public class Cantante extends Artista{
 
     private RegistroVoz voz;
@@ -28,17 +27,15 @@ public class Cantante extends Artista{
 
     @Override
     public String toString() {
-        return "Artista{" +
-                "idArtista=" + super.getIdArtista() +
-                ", dni= '" + super.getDni() + '\'' +
-                ", nombre = '" + super.getNombre() + '\'' +
-                ", nombreArtistico = '" + super.getNombreArtistico() + '\'' +
-                ", salario = " + super.getSalario() +
-                ", estiloMusical = '" + super.getEstiloMusical() + '\'' +
-                ", discos = " + super.getDiscos() +
-                ", pistas = " + super.getPistas() +
-                ", premios = " + super.getPremios() +
-                ", voz=" + voz +
-                '}';
+        return "Cantante \n " +
+                "DNI= '" + super.getDni() + '\n' +
+                ", Nombre: " + super.getNombre() + '\n' +
+                ", Nombre artistico: '" + super.getNombreArtistico() + '\n' +
+                ", Salario: " + super.getSalario() + "\n" +
+                ", Estilo musical: " + super.getEstiloMusical() + '\n' +
+                ", Discos:" + super.getDiscos() +
+                ", pistas:  " + super.getPistas() +
+                ", premios: " + super.getPremios() +
+                ", voz=" + voz;
     }
 }

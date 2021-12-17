@@ -1,6 +1,5 @@
 package models;
 
-import javax.persistence.EntityManagerFactory;
 import java.util.List;
 
 public interface DAO {
@@ -11,7 +10,17 @@ public interface DAO {
 
     void actualizar(Object objeto);
 
-    List<Object> listar();
+    void actualizarCantante(Object objeto);
+
+    List<Cantante> listarCantante();
+
+    List<Disco> listarDisco();
+
+    List<Pista> listarPista();
+
+    List<Premio> listarPremio();
+
+    List<Musico> listarMusico();
 
     void eliminar(String nombre);
 

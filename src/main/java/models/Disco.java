@@ -16,7 +16,7 @@ public class Disco {
     private String anhoSalida;
     private int numeroCanciones;
 
-    @OneToMany(mappedBy = "disco", fetch= FetchType.LAZY, cascade= CascadeType.ALL)
+    @OneToMany(mappedBy = "disco", cascade= CascadeType.ALL)
     private List<Pista> pistas;
 
 
