@@ -14,19 +14,6 @@ public class Musico extends Artista{
     public Musico() {
     }
 
-    public Musico(String dni, String nombre, String nombreArtistico, float salario, String estiloMusical, List<Disco> discos, List<Pista> pistas, List<Premio> premios, String instrumento) {
-        super(dni, nombre, nombreArtistico, salario, estiloMusical, discos, pistas, premios);
-        this.instrumento = instrumento;
-    }
-
-    public Musico(String dni, String nombre, String nombreArtistico, float salario, String estiloMusical, List<Disco> discos, List<Pista> pistas, List<Premio> premios) {
-        super(dni, nombre, nombreArtistico, salario, estiloMusical, discos, pistas, premios);
-    }
-
-    public Musico(String dni, String nombre, String nombreArtistico, float salario, String estiloMusical) {
-        super(dni, nombre, nombreArtistico, salario, estiloMusical);
-    }
-
     public Musico(String dni, String nombre, String nombreArtistico, float salario, String estiloMusical, String instrumento) {
         super(dni, nombre, nombreArtistico, salario, estiloMusical);
         this.instrumento = instrumento;

@@ -1,5 +1,7 @@
 package models;
 
+import com.sun.istack.Nullable;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,14 +23,15 @@ public class Artista {
     @Column(name = "estilomusical")
     private String estiloMusical;
 
-    @OneToMany(mappedBy = "artista", cascade = {CascadeType.ALL},fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "artista", cascade = {CascadeType.ALL})
     private List<Disco> discos;
 
-    @ManyToMany()
+
+    @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(name="pist_art",joinColumns = @JoinColumn(name="idartista"),inverseJoinColumns = @JoinColumn(name= "idpista"))
     private List<Pista> pistas;
 
-    @ManyToMany(mappedBy = "artistas", cascade = {CascadeType.ALL})
+    @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(name="pre_art",joinColumns = @JoinColumn(name="idartista"),inverseJoinColumns = @JoinColumn(name= "idpremio"))
     private List<Premio> premios;
 

@@ -55,18 +55,12 @@ public class Ctrl_cantante {
     }
 
     public void anhadirCantante() {
-        List<Disco> discos = new ArrayList<>();
-        List<Pista> pistas = new ArrayList<>();
-        List<Premio> premios = new ArrayList<>();
         Cantante c = new Cantante(
                 vista.pedirDNI(),
                 vista.pedirNombre(),
                 vista.pedirNombreArtistico(),
                 vista.pedirSalario(),
                 vista.pedirEstilo(),
-                discos,
-                pistas,
-                premios,
                 seleccionDeVoz()
         );
         CantanteDAO cantanteDAO = new CantanteDAO();

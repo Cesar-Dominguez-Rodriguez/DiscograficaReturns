@@ -21,6 +21,15 @@ public class Vsta_premio implements Vsta_Pedir_Por_Datos{
         return pedirDecimal("Introduce el nombre del premio:");
     }
 
+    public String pedirMaterial(){
+        return pedirString("Introduce el material del premio");
+    }
+
+    public int pedirAnhoFundacion(){
+        return pedirEntero("Indica el año de fundacion");
+    }
+
+
     /// Peticion de datos por tipo //////
 
     @Override

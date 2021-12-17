@@ -47,11 +47,13 @@ public class Ctrl_disco {
     }
 
     public void anhadirDisco() {
-
+        CantanteDAO cantanteDAO= new CantanteDAO();
         Disco d = new Disco(
                 vista.pedirNombre(),
                 vista.pedirAnhoSalida(),
-                vista.pedirNumCanciones());
+                vista.pedirNumCanciones(),
+                (Artista) cantanteDAO.obtener("Sabrina Carpenter")
+        );
 
 //        Pista pista= new Pista(new Vsta_pista().pedirNombre(),new Vsta_pista().pedirDuracion(),new Vsta_pista().pedirLetra());
 //        PistaDAO pistaDAO= new PistaDAO();

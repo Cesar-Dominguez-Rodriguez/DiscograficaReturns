@@ -48,9 +48,8 @@ public class Ctrl_premio {
         Premio p = new Premio(
                 vista.pedirNombre(),
                 vista.pedirDinero(),
-                "",
-                0,
-                null
+                vista.pedirMaterial(),
+                vista.pedirAnhoFundacion()
         );
         System.out.println(p.toString());
         PremioDAO premioDAO = new PremioDAO();

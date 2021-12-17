@@ -20,15 +20,19 @@ public class Pista {
     @JoinColumn(name = "FK_DISCO")
     private Disco disco;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "pistas")
     private List<Artista> artistas;
 
-    public Pista(String nombre, String duracion, String letra, Disco disco, List<Artista> artistas) {
+    public Pista(String nombre, String duracion, String letra) {
         this.nombre = nombre;
         this.duracion = duracion;
         this.letra = letra;
-        this.disco = null;
+        this.disco = new Disco();
         this.artistas = new ArrayList<>();
+    }
+
+    public Pista() {
+
     }
 
     public int getIdPista() {

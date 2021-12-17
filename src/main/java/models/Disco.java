@@ -19,6 +19,7 @@ public class Disco {
     @OneToMany(mappedBy = "disco", fetch= FetchType.LAZY, cascade= CascadeType.ALL)
     private List<Pista> pistas;
 
+
     @ManyToOne
     @JoinColumn(name = "FK_ARTISTA")
     private Artista artista;
@@ -26,12 +27,12 @@ public class Disco {
     public Disco() {
     }
 
-    public Disco(String nombre, String anhoSalida, int numeroCanciones) {
+    public Disco(String nombre, String anhoSalida, int numeroCanciones, Artista artista) {
         this.nombre = nombre;
         this.anhoSalida = anhoSalida;
         this.numeroCanciones = numeroCanciones;
         this.pistas = new ArrayList<>();
-        this.artista = null;
+        this.artista = artista;
     }
 
     public void anhadirPista(Pista p){

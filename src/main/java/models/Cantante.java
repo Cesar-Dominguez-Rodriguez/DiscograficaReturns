@@ -13,22 +13,9 @@ public class Cantante extends Artista{
     public Cantante() {
     }
 
-    public Cantante(String dni, String nombre, String nombreArtistico, float salario, String estiloMusical, List<Disco> discos, List<Pista> pistas, List<Premio> premios, RegistroVoz voz) {
-        super(dni, nombre, nombreArtistico, salario, estiloMusical, discos, pistas, premios);
-        this.voz = voz;
-    }
-
-    public Cantante(String dni, String nombre, String nombreArtistico, float salario, String estiloMusical, List<Disco> discos, List<Pista> pistas, List<Premio> premios) {
-        super(dni, nombre, nombreArtistico, salario, estiloMusical, discos, pistas, premios);
-    }
-
     public Cantante(String dni, String nombre, String nombreArtistico, float salario, String estiloMusical, RegistroVoz voz) {
         super(dni, nombre, nombreArtistico, salario, estiloMusical);
         this.voz = voz;
-    }
-
-    public Cantante(String dni, String nombre, String nombreArtistico, float salario, String estiloMusical) {
-        super(dni, nombre, nombreArtistico, salario, estiloMusical);
     }
 
     public RegistroVoz getVoz() {

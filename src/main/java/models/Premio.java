@@ -17,18 +17,18 @@ public class Premio {
     private String material;
     private int anhoFundacion;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "premios")
     private List<Artista> artistas;
 
     public Premio(){
     }
 
-    public Premio(String nombre, float dinero, String material, int anhoFundacion, List<Artista> artistas) {
+    public Premio(String nombre, float dinero, String material, int anhoFundacion) {
         this.nombre = nombre;
         this.dinero = dinero;
         this.material = material;
         this.anhoFundacion = anhoFundacion;
-        this.artistas = artistas;
+        this.artistas = new ArrayList<>();
     }
 
     public int getIdPremio() {
