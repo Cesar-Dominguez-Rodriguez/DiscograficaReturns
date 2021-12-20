@@ -6,7 +6,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.util.List;
 
-public class MusicoDAO implements DAO {
+public class MusicoDAO implements DAO<Musico> {
 
     private EntityManagerFactory emf;
 
@@ -15,7 +15,7 @@ public class MusicoDAO implements DAO {
     }
 
     @Override
-    public Object obtener(String nombreABuscar) {
+    public Musico obtener(String nombreABuscar) {
         EntityManager em = emf.createEntityManager();
         Query query= em.createQuery("select m from Musico m where m.nombreArtistico=:nombreArtistic");
         query.setParameter("nombreArtistic",nombreABuscar);
@@ -26,7 +26,7 @@ public class MusicoDAO implements DAO {
     }
 
     @Override
-    public void anhadir(Object objeto) {
+    public void anhadir(Musico objeto) {
         EntityManager em= emf.createEntityManager();
         Musico musico= (Musico) objeto;
         em.getTransaction().begin();
@@ -36,8 +36,7 @@ public class MusicoDAO implements DAO {
     }
 
     @Override
-    public void actualizar(Object objeto) {
-        Musico m= (Musico) objeto;
+    public void actualizar(Musico m) {
         String sentencia= "update Musico " +
                 " set dni= '"+m.getDni()+"' , nombre= '"+m.getNombre()+
                 "' , nombreArtistico= '"+m.getNombreArtistico()+"', salario= "+m.getSalario()+
@@ -51,32 +50,12 @@ public class MusicoDAO implements DAO {
     }
 
     @Override
-    public void actualizarCantante(Object objeto) {
+    public void eliminar(Musico t) {
 
     }
 
     @Override
-    public List<Cantante> listarCantante() {
-        return null;
-    }
-
-    @Override
-    public List<Disco> listarDisco() {
-        return null;
-    }
-
-    @Override
-    public List<Pista> listarPista() {
-        return null;
-    }
-
-    @Override
-    public List<Premio> listarPremio() {
-        return null;
-    }
-
-    @Override
-    public List<Musico> listarMusico() {
+    public List<Musico> listar() {
         EntityManager em = emf.createEntityManager();
         Query query= em.createQuery("select m from Musico m");
         List<Musico>  listaMusicos = query.getResultList();

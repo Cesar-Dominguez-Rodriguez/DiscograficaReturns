@@ -27,7 +27,7 @@ public class Pista {
         this.nombre = nombre;
         this.duracion = duracion;
         this.letra = letra;
-        this.disco = new Disco();
+        this.disco = null;
         this.artistas = new ArrayList<>();
     }
 
@@ -69,12 +69,11 @@ public class Pista {
 
     @Override
     public String toString() {
-        return "Pista{" +
-                "idPista=" + idPista +
-                ", nombre='" + nombre + '\'' +
-                ", duracion='" + duracion + '\'' +
-                ", Letra='" + letra + '\'' +
-                ", disco=" + disco +
-                '}';
+        return "Pista \n" +
+                "idPista=" + idPista + "\n" +
+                "Nombre='" + nombre + '\'' + "\n" +
+                "Duracion='" + duracion + '\'' + "\n" +
+                "Letra='" + letra + '\'' + "\n" +
+                "Disco= '" + disco + '\'';
     }
 }

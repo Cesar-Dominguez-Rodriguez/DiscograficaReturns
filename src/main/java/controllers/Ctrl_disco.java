@@ -52,7 +52,7 @@ public class Ctrl_disco {
                 vista.pedirNombre(),
                 vista.pedirAnhoSalida(),
                 vista.pedirNumCanciones(),
-                (Artista) cantanteDAO.obtener("Sabrina Carpenter")
+                cantanteDAO.obtener("Sabrina Carpenter")
         );
 
 //        Pista pista= new Pista(new Vsta_pista().pedirNombre(),new Vsta_pista().pedirDuracion(),new Vsta_pista().pedirLetra());
@@ -84,10 +84,8 @@ public class Ctrl_disco {
 
     public void listarDisco() {
         DiscoDAO discoDAO = new DiscoDAO();
-        List<Disco> listadisco = new ArrayList<>();
-        List<Disco> listaobjeto = discoDAO.listarDisco();
-        for (Disco d : listaobjeto) {
-            listadisco.add(d);
+        List<Disco> listadisco = discoDAO.listar();
+        for (Disco d : listadisco) {
             System.out.println(d.toString());
         }
 
@@ -111,12 +109,12 @@ public class Ctrl_disco {
             case 2:
                 if (vista.accionArtista() == 1) {
                     if (vista.tipoDeArtista() == 1) {
-                        Cantante cantante = (Cantante) cantanteDAO.obtener(vsta_cantante.pedirNombreArtistico());
+                        Cantante cantante = cantanteDAO.obtener(vsta_cantante.pedirNombreArtistico());
                         discoDAO.meterDiscoEnCAntante(cantante,disco);
 //                        disco.setArtista(cantante);
 //                        cantante.getDiscos().add(disco);
                     } else if (vista.tipoDeArtista() == 2) {
-                        Musico musico= (Musico) musicoDAO.obtener(vsta_musico.pedirNombreArtistico());
+                        Musico musico= musicoDAO.obtener(vsta_musico.pedirNombreArtistico());
 //                        disco.setArtista(musico);
 //                        musico.getDiscos().add(disco);
                     }else if (vista.accionArtista() == 0) {

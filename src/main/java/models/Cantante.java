@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@DiscriminatorValue(value = "1")
+//@DiscriminatorValue(value = "1")
 public class Cantante extends Artista{
 
     private RegistroVoz voz;

@@ -9,8 +9,8 @@ import java.util.List;
 @Entity
 @Table(name = "artistas")
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name="tipo_artista",discriminatorType=DiscriminatorType.INTEGER)
-@DiscriminatorValue(value="0")
+//@DiscriminatorColumn(name="tipo_artista",discriminatorType=DiscriminatorType.INTEGER)
+//@DiscriminatorValue(value="0")
 public abstract class Artista {
 
     @Id

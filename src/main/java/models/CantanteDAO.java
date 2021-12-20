@@ -6,7 +6,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.util.List;
 
-public class CantanteDAO implements DAO{
+public class CantanteDAO implements DAO<Cantante>{
 
     private EntityManagerFactory emf;
 
@@ -15,7 +15,7 @@ public class CantanteDAO implements DAO{
     }
 
     @Override
-    public Object obtener(String nombreABuscar) {
+    public Cantante obtener(String nombreABuscar) {
         EntityManager em = emf.createEntityManager();
         Query query= em.createQuery("select c from Cantante c where c.nombreArtistico=:nombreArtistic");
         query.setParameter("nombreArtistic",nombreABuscar);
@@ -25,8 +25,7 @@ public class CantanteDAO implements DAO{
     }
 
     @Override
-    public void anhadir(Object objeto) {
-        Cantante cantante= (Cantante) objeto;
+    public void anhadir(Cantante cantante) {
         System.out.println(cantante.toString());
         EntityManager em= emf.createEntityManager();
         em.getTransaction().begin();
@@ -36,8 +35,7 @@ public class CantanteDAO implements DAO{
     }
 
     @Override
-    public void actualizar(Object objeto) {
-        Cantante c= (Cantante) objeto;
+    public void actualizar(Cantante c) {
         String sentencia= "update Cantante " +
                 "set dni= '"+c.getDni()+"', nombre= '"+c.getNombre()+
                 "', nombreArtistico= '"+c.getNombreArtistico()+"', salario= "+c.getSalario()+
@@ -51,12 +49,12 @@ public class CantanteDAO implements DAO{
     }
 
     @Override
-    public void actualizarCantante(Object objeto) {
+    public void eliminar(Cantante t) {
 
     }
 
     @Override
-    public List<Cantante> listarCantante() {
+    public List<Cantante> listar() {
         EntityManager em = emf.createEntityManager();
         Query query= em.createQuery("select c from Cantante c");
         List<Cantante>  listacantante = query.getResultList();
@@ -68,27 +66,6 @@ public class CantanteDAO implements DAO{
         return listacantante;
     }
 
-    @Override
-    public List<Disco> listarDisco() {
-        return null;
-    }
-
-    @Override
-    public List<Pista> listarPista() {
-        return null;
-    }
-
-    @Override
-    public List<Premio> listarPremio() {
-        return null;
-    }
-
-    @Override
-    public List<Musico> listarMusico() {
-        return null;
-    }
-
-    @Override
     public void eliminar(String nombre) {
         String sentencia= "delete from Cantante where nombre=:nombre";
         EntityManager em = emf.createEntityManager();

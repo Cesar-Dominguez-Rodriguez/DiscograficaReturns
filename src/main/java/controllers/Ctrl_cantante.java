@@ -69,18 +69,15 @@ public class Ctrl_cantante {
 
     public void modificarCantante() {
         CantanteDAO cantanteDAO = new CantanteDAO();
-        Cantante c = (Cantante) cantanteDAO.obtener(vista.pedirNombreArtistico());
+        Cantante c = cantanteDAO.obtener(vista.pedirNombreArtistico());
         modificarAtributoCantante(c);
         cantanteDAO.actualizar(c);
     }
 
     public void listarCantante() {
         CantanteDAO cantanteDAO = new CantanteDAO();
-        List<Cantante> listacantante = new ArrayList<>();
-        List<Cantante> listaobjeto = cantanteDAO.listarCantante();
-        for (Object o : listaobjeto) {
-            Cantante c = (Cantante) o;
-            listacantante.add(c);
+        List<Cantante> listacantante = cantanteDAO.listar();
+        for (Cantante c : listacantante) {
             System.out.println(c.toString());
         }
 
@@ -148,7 +145,7 @@ public class Ctrl_cantante {
                 switch (vista_menu.menuPremioCase6()) {
                     case 1:
                         List<Premio> premios = cantante.getPremios();
-                        Premio p = (Premio) premioDAO.obtener(vista_premio.pedirNombre());
+                        Premio p = premioDAO.obtener(vista_premio.pedirNombre());
                         premios.add(p);
                         break;
                     case 2:

@@ -6,7 +6,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.util.List;
 
-public class DiscoDAO implements DAO{
+public class DiscoDAO implements DAO<Disco>{
 
     private EntityManagerFactory emf;
 
@@ -15,9 +15,8 @@ public class DiscoDAO implements DAO{
     }
 
     @Override
-    public Object obtener(String nombreABuscar) {
+    public Disco obtener(String nombreABuscar) {
         EntityManager em = emf.createEntityManager();
-        Disco nuevodisco= new Disco();
         Query query= em.createQuery("select d from Disco d where d.nombre=:nombre");
         query.setParameter("nombre",nombreABuscar);
         Disco d = (Disco) query.getSingleResult();
@@ -27,7 +26,7 @@ public class DiscoDAO implements DAO{
     }
 
     @Override
-    public void anhadir(Object objeto) {
+    public void anhadir(Disco objeto) {
         EntityManager em= emf.createEntityManager();
         Disco disco= (Disco) objeto;
         System.out.println(disco.toString());
@@ -38,8 +37,7 @@ public class DiscoDAO implements DAO{
     }
 
     @Override
-    public void actualizar(Object objeto) {
-        Disco d= (Disco) objeto;
+    public void actualizar(Disco d) {
         String sentencia= "update Disco " +
                 "set nombre= '"+d.getNombre()+"', artista= "+d.getArtista()+", pistas="+d.getPistas();
         EntityManager em = emf.createEntityManager();
@@ -52,37 +50,17 @@ public class DiscoDAO implements DAO{
     }
 
     @Override
-    public void actualizarCantante(Object objeto) {
+    public void eliminar(Disco t) {
 
     }
 
     @Override
-    public List<Cantante> listarCantante() {
-        return null;
-    }
-
-    @Override
-    public List<Disco> listarDisco() {
+    public List<Disco> listar() {
         EntityManager em = emf.createEntityManager();
         Query query= em.createQuery("select d from Disco d");
         List<Disco>  listadisco = query.getResultList();
         em.close();
         return listadisco;
-    }
-
-    @Override
-    public List<Pista> listarPista() {
-        return null;
-    }
-
-    @Override
-    public List<Premio> listarPremio() {
-        return null;
-    }
-
-    @Override
-    public List<Musico> listarMusico() {
-        return null;
     }
 
     @Override
@@ -98,9 +76,7 @@ public class DiscoDAO implements DAO{
 
     }
 
-    public void meterDiscoEnCAntante(Object objetoC, Object objetoD){
-        Cantante cantante= (Cantante) objetoC;
-        Disco disco= (Disco) objetoD;
+    public void meterDiscoEnCAntante(Cantante cantante, Disco disco){
         EntityManager em= emf.createEntityManager();
         cantante.anhadirDisco(disco);
         disco.setArtista(cantante);

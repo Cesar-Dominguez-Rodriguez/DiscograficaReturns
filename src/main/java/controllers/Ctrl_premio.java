@@ -51,24 +51,21 @@ public class Ctrl_premio {
                 vista.pedirMaterial(),
                 vista.pedirAnhoFundacion()
         );
-        System.out.println(p.toString());
         PremioDAO premioDAO = new PremioDAO();
         premioDAO.anhadir(p);
     }
 
     public void modificarPremio() {
         PremioDAO premioDAO = new PremioDAO();
-        Premio p = (Premio) premioDAO.obtener(vista.pedirNombre());
+        Premio p = premioDAO.obtener(vista.pedirNombre());
         modificarAtributoPremio(p);
         premioDAO.actualizar(p);
     }
 
     public void listarPremio() {
         PremioDAO premioDAO = new PremioDAO();
-        List<Premio> listapremio = new ArrayList<>();
-        List<Premio> listaobjeto = premioDAO.listarPremio();
-        for (Premio p : listaobjeto){
-            listapremio.add(p);
+        List<Premio> listaPremio = premioDAO.listar();
+        for (Premio p : listaPremio){
             System.out.println(p.toString());
         }
 

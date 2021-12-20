@@ -2,25 +2,17 @@ package models;
 
 import java.util.List;
 
-public interface DAO {
+public interface DAO<Tipo>{
 
-    Object obtener(String nombreABuscar);
+    void anhadir(Tipo t);
 
-    void anhadir(Object objeto);
+    Tipo obtener(String nombreABuscar);
 
-    void actualizar(Object objeto);
+    List<Tipo> listar();
 
-    void actualizarCantante(Object objeto);
+    void actualizar(Tipo t);
 
-    List<Cantante> listarCantante();
-
-    List<Disco> listarDisco();
-
-    List<Pista> listarPista();
-
-    List<Premio> listarPremio();
-
-    List<Musico> listarMusico();
+    void eliminar(Tipo t);
 
     void eliminar(String nombre);
 

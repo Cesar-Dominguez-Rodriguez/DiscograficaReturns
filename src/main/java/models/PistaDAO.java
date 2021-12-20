@@ -6,7 +6,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.util.List;
 
-public class PistaDAO implements DAO {
+public class PistaDAO implements DAO<Pista> {
 
     private EntityManagerFactory emf;
 
@@ -15,7 +15,7 @@ public class PistaDAO implements DAO {
     }
 
     @Override
-    public Object obtener(String nombreABuscar) {
+    public Pista obtener(String nombreABuscar) {
         EntityManager em = emf.createEntityManager();
         Query query= em.createQuery("select p from Pista p where p.nombre=:nombre");
         query.setParameter("nombre",nombreABuscar);
@@ -25,9 +25,8 @@ public class PistaDAO implements DAO {
     }
 
     @Override
-    public void anhadir(Object objeto) {
+    public void anhadir(Pista pista) {
         EntityManager em= emf.createEntityManager();
-        Pista pista= (Pista) objeto;
         System.out.println(pista.toString());
         em.getTransaction().begin();
         em.persist(pista);
@@ -36,8 +35,7 @@ public class PistaDAO implements DAO {
     }
 
     @Override
-    public void actualizar(Object objeto) {
-        Pista p= (Pista) objeto;
+    public void actualizar(Pista p) {
         String sentencia= "update Pista " +
                 "set nombre= '"+p.getNombre()+"', disco="+p.getDisco()+
                 ", artistas=  "+p.getArtistas();
@@ -51,36 +49,16 @@ public class PistaDAO implements DAO {
     }
 
     @Override
-    public void actualizarCantante(Object objeto) {
+    public void eliminar(Pista pista) {
 
     }
 
     @Override
-    public List<Cantante> listarCantante() {
-        return null;
-    }
-
-    @Override
-    public List<Disco> listarDisco() {
-        return null;
-    }
-
-    @Override
-    public List<Pista> listarPista() {
+    public List<Pista> listar() {
         EntityManager em = emf.createEntityManager();
         Query query= em.createQuery("select p from Pista p");
         List<Pista>  listapista =query.getResultList();
         return listapista;
-    }
-
-    @Override
-    public List<Premio> listarPremio() {
-        return null;
-    }
-
-    @Override
-    public List<Musico> listarMusico() {
-        return null;
     }
 
     @Override

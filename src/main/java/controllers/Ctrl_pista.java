@@ -51,24 +51,22 @@ public class Ctrl_pista {
                 vista.pedirDuracion(),
                 vista.pedirLetra()
         );
-        System.out.println(p.toString());
+        System.out.println(p);
         PistaDAO pistaDAO = new PistaDAO();
         pistaDAO.anhadir(p);
     }
 
     public void modificarPista() {
         PistaDAO pistaDAO = new PistaDAO();
-        Pista p = (Pista) pistaDAO.obtener(vista.pedirNombre());
+        Pista p = pistaDAO.obtener(vista.pedirNombre());
         modificarAtributoPista(p);
         pistaDAO.actualizar(p);
     }
 
     public void listarPista() {
         PistaDAO pistaDAO = new PistaDAO();
-        List<Pista> listapista = new ArrayList<>();
-        List<Pista> listaobjeto = pistaDAO.listarPista();
-        for (Object o : listaobjeto){
-            Pista p = (Pista) o;
+        List<Pista> listapista = pistaDAO.listar();
+        for (Pista p : listapista){
             listapista.add(p);
             System.out.println(p.toString());
         }
@@ -107,11 +105,11 @@ public class Ctrl_pista {
 
                 }else if(vista.actionArtista()==1){
                     if (vista.tipoDeArtista() == 1) {
-                        Cantante cantante = (Cantante) cantanteDAO.obtener(vsta_cantante.pedirNombreArtistico());
+                        Cantante cantante = cantanteDAO.obtener(vsta_cantante.pedirNombreArtistico());
                         pista.getArtistas().add(cantante);
                         cantante.getPistas().add(pista);
                     } else if (vista.tipoDeArtista() == 2) {
-                        Musico musico= (Musico) musicoDAO.obtener(vsta_musico.pedirNombreArtistico());
+                        Musico musico= musicoDAO.obtener(vsta_musico.pedirNombreArtistico());
                         pista.getArtistas().add(musico);
                         musico.getPistas().add(pista);
                     }

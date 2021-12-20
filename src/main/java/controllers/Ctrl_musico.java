@@ -74,14 +74,10 @@ public class Ctrl_musico {
 
     public void listarMusico() {
         MusicoDAO musicoDAO = new MusicoDAO();
-        List<Musico> listamusico = new ArrayList<>();
-        List<Disco> listaobjeto = musicoDAO.listarDisco();
-        for (Object o : listaobjeto){
-            Musico m = (Musico) o;
-            listamusico.add(m);
+        List<Musico> listamusico = musicoDAO.listar();
+        for (Musico m : listamusico){
             System.out.println(m.toString());
         }
-
     }
 
     public void eliminarMusico() {
@@ -110,7 +106,7 @@ public class Ctrl_musico {
                 PremioDAO premioDAO = new PremioDAO();
                 switch (vista_menu.menuPremioCase6()) {
                     case 1:
-                        musico.getPremios().add((Premio) premioDAO.obtener(vista_premio.pedirNombre()));
+                        musico.getPremios().add(premioDAO.obtener(vista_premio.pedirNombre()));
                     case 2:
                         musico.getPremios().remove(premioDAO.obtener(vista_premio.pedirNombre()));
 //                        for (Premio premio : cantante.getPremios()) {
