@@ -18,6 +18,7 @@ public class CantanteDAO implements DAO<Cantante>{
     public Cantante obtener(String nombreABuscar) {
         EntityManager em = emf.createEntityManager();
         Query query= em.createQuery("select c from Cantante c where c.nombreArtistico=:nombreArtistic");
+//        em.find(Cantante.class);
         query.setParameter("nombreArtistic",nombreABuscar);
         Cantante c = (Cantante) query.getSingleResult();
         em.close();
