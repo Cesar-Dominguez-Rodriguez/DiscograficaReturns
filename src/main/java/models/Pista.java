@@ -74,6 +74,7 @@ public class Pista {
                 "Nombre='" + nombre + '\'' + "\n" +
                 "Duracion='" + duracion + '\'' + "\n" +
                 "Letra='" + letra + '\'' + "\n" +
-                "Disco= '" + disco + '\'';
+                "Disco= '" + disco + '\''+"\n"+
+                "Artista= "+ this.artistas.toString();
     }
 }

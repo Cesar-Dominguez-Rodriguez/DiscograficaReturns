@@ -16,7 +16,7 @@ public class Disco {
     private String anhoSalida;
     private int numeroCanciones;
 
-    @OneToMany(mappedBy = "disco", cascade= CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "disco", cascade= CascadeType.ALL)
     private List<Pista> pistas;
 
 
@@ -79,8 +79,8 @@ public class Disco {
     @Override
     public String toString() {
         return "Disco \n" +
-                "nombre: '" + nombre + '\''+'\n' +
-                "  anhoSalida: '" + anhoSalida + '\'' +'\n'+
+                " nombre: " + nombre +'\n' +
+                "  anhoSalida: " + anhoSalida +'\n'+
                 "  numeroCanciones: " + numeroCanciones +'\n'+
                 "  pistas: " + pistas +
                 "  artista: " + artista.getNombreArtistico();

@@ -32,15 +32,15 @@ public class Musico extends Artista{
     public String toString() {
         return "Artista{" +
                 "idArtista=" + super.getIdArtista() +
-                ", dni= '" + super.getDni() + '\'' +
-                ", nombre = '" + super.getNombre() + '\'' +
-                ", nombreArtistico = '" + super.getNombreArtistico() + '\'' +
-                ", salario = " + super.getSalario() +
-                ", estiloMusical = '" + super.getEstiloMusical() + '\'' +
-                ", discos = " + super.getDiscos() +
-                ", pistas = " + super.getPistas() +
-                ", premios = " + super.getPremios() +
-                ", instrumento=" + instrumento +
+                " DNI= '" + super.getDni() + '\'' +
+                " Nombre = '" + super.getNombre() + '\'' +
+                " NombreArtistico = '" + super.getNombreArtistico() + '\'' +
+                " Salario = " + super.getSalario() +
+                " EstiloMusical = '" + super.getEstiloMusical() + '\'' +
+                " Discos = " + super.getDiscos() +
+                " Pistas = " + super.getPistas() +
+                " Premios = " + super.getPremios() +
+                " Instrumento=" + instrumento +
                 '}';
     }
 }

@@ -17,6 +17,7 @@ public abstract class Artista {
     @Column(name = "idartista")
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int idArtista;
+
     private String dni;
     private String nombre;
     @Column(name = "nombreartistico")
