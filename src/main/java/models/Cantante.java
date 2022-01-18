@@ -27,15 +27,15 @@ public class Cantante extends Artista{
 
     @Override
     public String toString() {
-        return "Cantante \n " +
-                "DNI= '" + super.getDni() + '\n' +
-                ", Nombre: " + super.getNombre() + '\n' +
-                ", Nombre artistico: '" + super.getNombreArtistico() + '\n' +
-                ", Salario: " + super.getSalario() + "\n" +
+        return "Cantante\n " +
+                " DNI= '" + super.getDni() + '\n' +
+                "  Nombre: " + super.getNombre() + '\n' +
+                "  Nombre artistico: '" + super.getNombreArtistico() + '\n' +
+                "  Salario: " + super.getSalario() + "\n" +
                 ", Estilo musical: " + super.getEstiloMusical() + '\n' +
                 ", Discos:" + super.getDiscos() +
                 ", pistas:  " + super.getPistas() +
                 ", premios: " + super.getPremios() +
-                ", voz=" + voz;
+                ", voz=" + voz + "\n\n";
     }
 }

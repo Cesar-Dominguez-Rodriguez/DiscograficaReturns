@@ -22,6 +22,7 @@ public class CantanteDAO implements DAO<Cantante>{
         query.setParameter("nombreArtistic",nombreABuscar);
         Cantante c = (Cantante) query.getSingleResult();
         em.close();
+        System.out.println(c.toString());
         return c;
     }
 
