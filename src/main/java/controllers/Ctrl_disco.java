@@ -1,19 +1,22 @@
 package controllers;
 
 import models.*;
+import models.DAO.CantanteDAO;
+import models.DAO.DiscoDAO;
+import models.DAO.MusicoDAO;
+import models.DAO.PistaDAO;
 import views.Vsta_cantante;
 import views.Vsta_disco;
 import views.Vsta_musico;
 import views.Vsta_pista;
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Ctrl_disco {
 
     private Vsta_disco vista;
+    private Vsta_cantante vsta_cantante;
+    private Vsta_musico vsta_musico;
 
     public Ctrl_disco() {
         vista = new Vsta_disco();
@@ -24,7 +27,10 @@ public class Ctrl_disco {
         while (ejecucion) {
             switch (option) {
                 case 1:
-                    anhadirDisco();
+                    boolean artistaIsCantante = true;
+                    if (artistaIsCantante = true) {
+                        anhadirDiscoCantante();
+                    }
                     ejecucion = false;
                     break;
                 case 2:
@@ -46,14 +52,26 @@ public class Ctrl_disco {
         }
     }
 
-    public void anhadirDisco() {
-        CantanteDAO cantanteDAO= new CantanteDAO();
+    public void anhadirDiscoCantante() {
+        CantanteDAO cantanteDAO = new CantanteDAO();
         Disco d = new Disco(
                 vista.pedirNombre(),
                 vista.pedirAnhoSalida(),
                 vista.pedirNumCanciones(),
-                cantanteDAO.obtener("Sabrina Carpenter")
+                cantanteDAO.obtener(vsta_cantante.pedirNombreArtistico())
         );
+    }
+
+    public void anhadirDiscoMusico() {
+        MusicoDAO MusicoDAO = new MusicoDAO();
+        Disco d = new Disco(
+                vista.pedirNombre(),
+                vista.pedirAnhoSalida(),
+                vista.pedirNumCanciones(),
+                MusicoDAO.obtener(vsta_musico.pedirNombreArtistico())
+        );
+    }
+
 
 //        Pista pista= new Pista(new Vsta_pista().pedirNombre(),new Vsta_pista().pedirDuracion(),new Vsta_pista().pedirLetra());
 //        PistaDAO pistaDAO= new PistaDAO();
@@ -65,13 +83,13 @@ public class Ctrl_disco {
 //            p.setDisco(d);
 //            pistaDAO.actualizar(p);
 //        }
-        new DiscoDAO().anhadir(d);
-    }
+//        new DiscoDAO().anhadir(d);
+//    }
 
-    public Pista anhadirPistaADisco(){
+    public Pista anhadirPistaADisco() {
 
-        PistaDAO pistaDAO= new PistaDAO();
-        Pista pista= (Pista) pistaDAO.obtener(new Vsta_pista().pedirNombre());
+        PistaDAO pistaDAO = new PistaDAO();
+        Pista pista = (Pista) pistaDAO.obtener(new Vsta_pista().pedirNombre());
         return pista;
     }
 
@@ -101,7 +119,7 @@ public class Ctrl_disco {
         MusicoDAO musicoDAO = new MusicoDAO();
         Vsta_cantante vsta_cantante = new Vsta_cantante();
         Vsta_musico vsta_musico = new Vsta_musico();
-        DiscoDAO discoDAO= new DiscoDAO();
+        DiscoDAO discoDAO = new DiscoDAO();
         switch (vista.modificarAtributo()) {
             case 1:
                 disco.setNombre(vista.pedirNombre());
@@ -110,14 +128,14 @@ public class Ctrl_disco {
                 if (vista.accionArtista() == 1) {
                     if (vista.tipoDeArtista() == 1) {
                         Cantante cantante = cantanteDAO.obtener(vsta_cantante.pedirNombreArtistico());
-                        discoDAO.meterDiscoEnCAntante(cantante,disco);
+                        discoDAO.meterDiscoEnCAntante(cantante, disco);
 //                        disco.setArtista(cantante);
 //                        cantante.getDiscos().add(disco);
                     } else if (vista.tipoDeArtista() == 2) {
-                        Musico musico= musicoDAO.obtener(vsta_musico.pedirNombreArtistico());
+                        Musico musico = musicoDAO.obtener(vsta_musico.pedirNombreArtistico());
 //                        disco.setArtista(musico);
 //                        musico.getDiscos().add(disco);
-                    }else if (vista.accionArtista() == 0) {
+                    } else if (vista.accionArtista() == 0) {
                     }
                 } else if (vista.accionArtista() == 2) {
                     disco.setArtista(null);

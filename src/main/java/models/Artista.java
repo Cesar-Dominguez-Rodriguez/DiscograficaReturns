@@ -26,9 +26,8 @@ public abstract class Artista {
     @Column(name = "estilomusical")
     private String estiloMusical;
 
-    @OneToMany(mappedBy = "artista", cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "artista", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     private List<Disco> discos;
-
 
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(name="pist_art",joinColumns = @JoinColumn(name="idartista"),inverseJoinColumns = @JoinColumn(name= "idpista"))

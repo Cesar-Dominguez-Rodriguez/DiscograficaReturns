@@ -78,11 +78,11 @@ public class Disco {
 
     @Override
     public String toString() {
-        return "Disco \n" +
-                " nombre: " + nombre +'\n' +
-                "  anhoSalida: " + anhoSalida +'\n'+
-                "  numeroCanciones: " + numeroCanciones +'\n'+
-                "  pistas: " + pistas +
-                "  artista: " + artista.getNombreArtistico();
+        return "\n  Disco: \n" +
+                "    nombre: " + nombre +'\n' +
+                "    año de salida: " + anhoSalida +'\n'+
+                "    numero de canciones: " + numeroCanciones +'\n'+
+                "    pistas: " + pistas +
+                "    artista: " + artista.getNombreArtistico();
     }
 }

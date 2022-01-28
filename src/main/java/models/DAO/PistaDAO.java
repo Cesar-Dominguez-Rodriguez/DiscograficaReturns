@@ -1,4 +1,7 @@
-package models;
+package models.DAO;
+
+import models.DAO.DAO;
+import models.Pista;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -6,41 +9,39 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.util.List;
 
-public class PremioDAO implements DAO<Premio>{
+public class PistaDAO implements DAO<Pista> {
+
     private EntityManagerFactory emf;
 
-    public PremioDAO(){
-        emf= Persistence.createEntityManagerFactory("default");
+    public PistaDAO(){
+        this.emf = Persistence.createEntityManagerFactory("default");
     }
 
     @Override
-    public Premio obtener(String nombreABuscar) {
+    public Pista obtener(String nombreABuscar) {
         EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        Query query= em.createQuery("select p from Premio p where p.nombre=:nombre");
+        Query query= em.createQuery("select p from Pista p where p.nombre=:nombre");
         query.setParameter("nombre",nombreABuscar);
-        Premio p = (Premio) query.getSingleResult();
+        Pista p = (Pista) query.getSingleResult();
         p.toString();
-        em.getTransaction().commit();
-        em.close();
         return p;
     }
 
     @Override
-    public void anhadir(Premio premio) {
+    public void anhadir(Pista pista) {
         EntityManager em= emf.createEntityManager();
-        System.out.println(premio.toString());
+        System.out.println(pista.toString());
         em.getTransaction().begin();
-        em.persist(premio);
+        em.persist(pista);
         em.getTransaction().commit();
         em.close();
     }
 
     @Override
-    public void actualizar(Premio p) {
-        String sentencia= "update Premio " +
-                "set nombre= '"+p.getNombre()+
-                "', dinero= "+p.getDinero()+", artistas= "+p.getArtistas();
+    public void actualizar(Pista p) {
+        String sentencia= "update Pista " +
+                "set nombre= '"+p.getNombre()+"', disco="+p.getDisco()+
+                ", artistas=  "+p.getArtistas();
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         Query query= em.createQuery(sentencia);
@@ -51,23 +52,22 @@ public class PremioDAO implements DAO<Premio>{
     }
 
     @Override
-    public void eliminar(Premio t) {
+    public void eliminar(Pista pista) {
 
     }
 
     @Override
-    public List<Premio> listar() {
+    public List<Pista> listar() {
         EntityManager em = emf.createEntityManager();
-        Query query= em.createQuery("select p from Premio p");
-        List<Premio>  listaPremio = query.getResultList();
-        em.close();
-        return listaPremio;
+        Query query= em.createQuery("select p from Pista p");
+        List<Pista>  listapista =query.getResultList();
+        return listapista;
     }
 
     @Override
     public void eliminar(String nombre) {
         EntityManager em = emf.createEntityManager();
-        String sentencia= "delete from Premio where nombre=:nombre";
+        String sentencia= "delete from Pista where nombre=:nombre";
         em.getTransaction().begin();
         Query query= em.createQuery(sentencia);
         query.setParameter("nombre",nombre);

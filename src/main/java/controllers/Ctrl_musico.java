@@ -1,14 +1,12 @@
 package controllers;
 
 import models.*;
+import models.DAO.MusicoDAO;
+import models.DAO.PremioDAO;
 import views.Vsta_Menu;
-import views.Vsta_cantante;
 import views.Vsta_musico;
 import views.Vsta_premio;
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Ctrl_musico {

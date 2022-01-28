@@ -1,13 +1,15 @@
 package controllers;
 
 import models.*;
+import models.DAO.CantanteDAO;
+import models.DAO.MusicoDAO;
+import models.DAO.PistaDAO;
 import views.Vsta_cantante;
 import views.Vsta_musico;
 import views.Vsta_pista;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Ctrl_pista {

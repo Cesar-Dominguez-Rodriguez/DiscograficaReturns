@@ -1,4 +1,7 @@
-package models;
+package models.DAO;
+
+import models.DAO.DAO;
+import models.Premio;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -6,67 +9,68 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.util.List;
 
-public class MusicoDAO implements DAO<Musico> {
-
+public class PremioDAO implements DAO<Premio> {
     private EntityManagerFactory emf;
 
-    public MusicoDAO(){
+    public PremioDAO(){
         emf= Persistence.createEntityManagerFactory("default");
     }
 
     @Override
-    public Musico obtener(String nombreABuscar) {
+    public Premio obtener(String nombreABuscar) {
         EntityManager em = emf.createEntityManager();
-        Query query= em.createQuery("select m from Musico m where m.nombreArtistico=:nombreArtistic");
-        query.setParameter("nombreArtistic",nombreABuscar);
-        Musico m = (Musico) query.getSingleResult();
+        em.getTransaction().begin();
+        Query query= em.createQuery("select p from Premio p where p.nombre=:nombre");
+        query.setParameter("nombre",nombreABuscar);
+        Premio p = (Premio) query.getSingleResult();
+        p.toString();
+        em.getTransaction().commit();
         em.close();
-        return m;
-
+        return p;
     }
 
     @Override
-    public void anhadir(Musico objeto) {
+    public void anhadir(Premio premio) {
         EntityManager em= emf.createEntityManager();
-        Musico musico= (Musico) objeto;
+        System.out.println(premio.toString());
         em.getTransaction().begin();
-        em.persist(musico);
+        em.persist(premio);
         em.getTransaction().commit();
         em.close();
     }
 
     @Override
-    public void actualizar(Musico m) {
-        String sentencia= "update Musico " +
-                " set dni= '"+m.getDni()+"' , nombre= '"+m.getNombre()+
-                "' , nombreArtistico= '"+m.getNombreArtistico()+"', salario= "+m.getSalario()+
-                ", estiloMusical= '"+m.getEstiloMusical()+"', instrumento= '"+m.getInstrumento()+"' where idArtista="+m.getIdArtista();
+    public void actualizar(Premio p) {
+        String sentencia= "update Premio " +
+                "set nombre= '"+p.getNombre()+
+                "', dinero= "+p.getDinero()+", artistas= "+p.getArtistas();
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         Query query= em.createQuery(sentencia);
+        System.out.println(sentencia);
         query.executeUpdate();
         em.getTransaction().commit();
         em.close();
     }
 
     @Override
-    public void eliminar(Musico t) {
+    public void eliminar(Premio t) {
 
     }
 
     @Override
-    public List<Musico> listar() {
+    public List<Premio> listar() {
         EntityManager em = emf.createEntityManager();
-        Query query= em.createQuery("select m from Musico m");
-        List<Musico>  listaMusicos = query.getResultList();
+        Query query= em.createQuery("select p from Premio p");
+        List<Premio>  listaPremio = query.getResultList();
         em.close();
-        return listaMusicos;
+        return listaPremio;
     }
 
     @Override
     public void eliminar(String nombre) {
-        String sentencia= "delete from Musico where nombre=:nombre";
         EntityManager em = emf.createEntityManager();
+        String sentencia= "delete from Premio where nombre=:nombre";
         em.getTransaction().begin();
         Query query= em.createQuery(sentencia);
         query.setParameter("nombre",nombre);
@@ -74,5 +78,4 @@ public class MusicoDAO implements DAO<Musico> {
         em.getTransaction().commit();
         em.close();
     }
-
 }

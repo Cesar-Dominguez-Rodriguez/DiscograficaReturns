@@ -1,4 +1,8 @@
-package models;
+package models.DAO;
+
+import models.Cantante;
+import models.DAO.DAO;
+import models.Disco;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -6,7 +10,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.util.List;
 
-public class DiscoDAO implements DAO<Disco>{
+public class DiscoDAO implements DAO<Disco> {
 
     private EntityManagerFactory emf;
 
