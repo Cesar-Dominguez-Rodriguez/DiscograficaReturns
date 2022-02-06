@@ -1,5 +1,6 @@
 package models.DAO;
 
+import models.Artista;
 import models.DAO.DAO;
 import models.Premio;
 
@@ -41,9 +42,12 @@ public class PremioDAO implements DAO<Premio> {
 
     @Override
     public void actualizar(Premio p) {
+//        String sentencia= "update Premio " +
+//                "set nombre= '"+p.getNombre()+
+//                "', dinero= "+p.getDinero()+", artistas= "+p.getArtistas();
         String sentencia= "update Premio " +
                 "set nombre= '"+p.getNombre()+
-                "', dinero= "+p.getDinero()+", artistas= "+p.getArtistas();
+                "', dinero= "+p.getDinero();
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         Query query= em.createQuery(sentencia);
@@ -77,5 +81,15 @@ public class PremioDAO implements DAO<Premio> {
         query.executeUpdate();
         em.getTransaction().commit();
         em.close();
+    }
+
+    public void anhadirPremioAArtista(Premio p, Artista a){
+        EntityManager em = emf.createEntityManager();
+        int idPremio= p.getIdPremio();
+        int idArtista = a.getIdArtista();
+        em.getTransaction().begin();
+        Query nativeQuery = em.createNativeQuery("INSERT INTO pre_art (idpremio,idartista) values ("+idPremio+","+idArtista+")");
+        nativeQuery.executeUpdate();
+        em.getTransaction().commit();
     }
 }

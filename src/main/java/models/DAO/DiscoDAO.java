@@ -24,7 +24,6 @@ public class DiscoDAO implements DAO<Disco> {
         Query query= em.createQuery("select d from Disco d where d.nombre=:nombre");
         query.setParameter("nombre",nombreABuscar);
         Disco d = (Disco) query.getSingleResult();
-        d.toString();
         em.close();
         return d;
     }

@@ -1,10 +1,14 @@
 package controllers;
 
 import models.Artista;
+import models.Cantante;
 import models.DAO.CantanteDAO;
 import models.DAO.MusicoDAO;
 import models.Premio;
 import models.DAO.PremioDAO;
+import org.hibernate.SQLQuery;
+import org.hibernate.query.NativeQuery;
+import org.hibernate.query.Query;
 import views.Vsta_cantante;
 import views.Vsta_musico;
 import views.Vsta_premio;
@@ -18,6 +22,7 @@ public class Ctrl_premio {
     private Vsta_musico vsta_musico;
     private CantanteDAO cantanteDAO;
     private MusicoDAO musicoDAO;
+    private PremioDAO dao;
 
     public Ctrl_premio() {
         vista = new Vsta_premio();
@@ -25,7 +30,7 @@ public class Ctrl_premio {
         vsta_musico = new Vsta_musico();
         cantanteDAO = new CantanteDAO();
         musicoDAO = new MusicoDAO();
-
+        dao = new PremioDAO();
     }
 
     public void ctrl(int option) {
@@ -62,7 +67,7 @@ public class Ctrl_premio {
                 vista.pedirMaterial(),
                 vista.pedirAnhoFundacion()
         );
-        System.out.println("Premio - anhadirPremio ->"+p);
+        System.out.println("Premio - anhadirPremio ->" + p);
         PremioDAO premioDAO = new PremioDAO();
         premioDAO.anhadir(p);
     }
@@ -77,7 +82,7 @@ public class Ctrl_premio {
     public void listarPremio() {
         PremioDAO premioDAO = new PremioDAO();
         List<Premio> listaPremio = premioDAO.listar();
-        for (Premio p : listaPremio){
+        for (Premio p : listaPremio) {
             System.out.println(p.toString());
         }
 
@@ -97,19 +102,36 @@ public class Ctrl_premio {
                 premio.setDinero(vista.pedirDinero());
                 break;
             case 3:
-                int opcion= vista.tipoDeArtista();
-                switch(opcion){
+                int opcion = vista.tipoDeArtista();
+                switch (opcion) {
                     case 1:
-                        System.out.println(premio.getArtistas());
-                        List<Artista> cantantes= premio.getArtistas();
-                        cantantes.add(cantanteDAO.obtener(vsta_cantante.pedirNombreArtistico()));
-                        premio.setArtistas(cantantes);
+                        if (vista.modificarArtista()==1){
+                            boolean ok = false;
+                            do {
+                                try {
+                                    String nombreArtistico= vsta_cantante.pedirNombreArtistico();
+                                    System.out.println(nombreArtistico);
+                                    Cantante cantante= new Cantante();
+                                    cantante = cantanteDAO.obtener(nombreArtistico);
+//                                  Cantante cantante = cantanteDAO.obtener(nombreArtistico);
+                                    dao.anhadirPremioAArtista(premio,cantante);
+                                    ok= true;
+                                } catch (Exception e) {
+                                    System.out.println(""+e.getMessage()+e.getCause());
+                                }
+                            } while (!ok);
+                        }else if(vista.modificarArtista()==2){
+
+
+                        }
+
+
                         break;
                     case 2:
-                        List<Artista> musicos= premio.getArtistas();
+                        List<Artista> musicos = premio.getArtistas();
                         musicos.add(musicoDAO.obtener(vsta_musico.pedirNombreArtistico()));
                         premio.setArtistas(musicos);
-                    break;
+                        break;
                 }
 
                 break;

@@ -40,6 +40,9 @@ public class Ctrl_menu {
                     case 5:
                         ctrl_premio.ctrl(vsta_menu.menuPremio());
                         break;
+                    case 6:
+
+                        break;
                     case 0:
                         ejecucion = false;
                         break;

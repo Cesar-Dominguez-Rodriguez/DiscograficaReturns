@@ -10,6 +10,7 @@ public class Vsta_premio implements Vsta_Pedir_Por_Datos{
         return pedirEntero("Indica que atributo quieres modificar:\n" +
                 "1. Nombre\n" +
                 "2. Dinero\n" +
+                "3. Artista\n" +
                 "0. Cancelar\n");
     }
 
@@ -33,6 +34,13 @@ public class Vsta_premio implements Vsta_Pedir_Por_Datos{
         return pedirEntero("Introduce el tipo de artista:\n" +
                 "1. Cantante\n" +
                 "2. Músico");
+    }
+
+    public int modificarArtista(){
+        return pedirEntero("Indica que accion quieres realizar\n" +
+                " 1. Añadir artista\n" +
+                " 2. Eliminar artista");
+
     }
 
     /// Peticion de datos por tipo //////

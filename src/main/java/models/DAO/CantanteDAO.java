@@ -20,12 +20,16 @@ public class CantanteDAO implements DAO<Cantante> {
     @Override
     public Cantante obtener(String nombreABuscar) {
         EntityManager em = emf.createEntityManager();
+        System.out.println("obtener 1");
         Query query= em.createQuery("select c from Cantante c where c.nombreArtistico=:nombreArtistic");
 //        em.find(Cantante.class);
+        System.out.println("obtener 2");
         query.setParameter("nombreArtistic",nombreABuscar);
+        System.out.println("obtener 3");
         Cantante c = (Cantante) query.getSingleResult();
+        System.out.println("obtener 4");
         em.close();
-        System.out.println(c.toString());
+        System.out.println("obtener 5");
         return c;
     }
 
