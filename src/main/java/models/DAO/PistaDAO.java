@@ -31,23 +31,34 @@ public class PistaDAO implements DAO<Pista> {
     public void anhadir(Pista pista) {
         EntityManager em= emf.createEntityManager();
         System.out.println(pista.toString());
-        em.getTransaction().begin();
-        em.persist(pista);
-        em.getTransaction().commit();
+        try {
+            em.getTransaction().begin();
+            em.persist(pista);
+            em.getTransaction().commit();
+        }catch(Exception e){
+            System.out.println("Error en añadir pista"+e.getMessage());
+        }
         em.close();
     }
 
     @Override
     public void actualizar(Pista p) {
-        String sentencia= "update Pista " +
+        /*String sentencia= "update Pista " +
                 "set nombre= '"+p.getNombre()+"', disco="+p.getDisco()+
-                ", artistas=  "+p.getArtistas();
+                ", artistas=  "+p.getArtistas();*/
+        String sentencia= "update Pista " +
+                "set nombre= '"+p.getNombre()+"', disco="+p.getDisco().getIdDisco();
         EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        Query query= em.createQuery(sentencia);
-        System.out.println(sentencia);
-        query.executeUpdate();
-        em.getTransaction().commit();
+        try {
+            em.getTransaction().begin();
+            Query query = em.createQuery(sentencia);
+            System.out.println(sentencia);
+            query.executeUpdate();
+            em.getTransaction().commit();
+        }catch (Exception e){
+            System.out.println("Error al actualizar pista"+e.getMessage());
+
+        }
         em.close();
     }
 

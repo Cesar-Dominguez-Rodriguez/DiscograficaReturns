@@ -18,7 +18,7 @@ public class Vsta_premio implements Vsta_Pedir_Por_Datos{
     }
 
     public Float pedirDinero(){
-        return pedirDecimal("Introduce el nombre del premio:");
+        return pedirDecimal("Introduce el dinero del premio:");
     }
 
     public String pedirMaterial(){
@@ -29,6 +29,11 @@ public class Vsta_premio implements Vsta_Pedir_Por_Datos{
         return pedirEntero("Indica el año de fundacion");
     }
 
+    public int tipoDeArtista(){
+        return pedirEntero("Introduce el tipo de artista:\n" +
+                "1. Cantante\n" +
+                "2. Músico");
+    }
 
     /// Peticion de datos por tipo //////
 

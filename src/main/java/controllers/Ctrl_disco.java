@@ -17,9 +17,13 @@ public class Ctrl_disco {
     private Vsta_disco vista;
     private Vsta_cantante vsta_cantante;
     private Vsta_musico vsta_musico;
+    private DiscoDAO dao;
 
     public Ctrl_disco() {
         vista = new Vsta_disco();
+        vsta_cantante = new Vsta_cantante();
+        vsta_musico = new Vsta_musico();
+        dao= new DiscoDAO();
     }
 
     public void ctrl(int option) {
@@ -60,6 +64,7 @@ public class Ctrl_disco {
                 vista.pedirNumCanciones(),
                 cantanteDAO.obtener(vsta_cantante.pedirNombreArtistico())
         );
+        dao.anhadir(d);
     }
 
     public void anhadirDiscoMusico() {

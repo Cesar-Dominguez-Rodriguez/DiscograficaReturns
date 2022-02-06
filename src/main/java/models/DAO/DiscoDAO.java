@@ -30,13 +30,17 @@ public class DiscoDAO implements DAO<Disco> {
     }
 
     @Override
-    public void anhadir(Disco objeto) {
+    public void anhadir(Disco disco) {
         EntityManager em= emf.createEntityManager();
-        Disco disco= (Disco) objeto;
         System.out.println(disco.toString());
-        em.getTransaction().begin();
-        em.persist(disco);
-        em.getTransaction().commit();
+
+        try {
+            em.getTransaction().begin();
+            em.persist(disco);
+            em.getTransaction().commit();
+        }catch (Exception e){
+            System.out.println("Error al persistir disco"+e.getMessage());
+        }
         em.close();
     }
 

@@ -20,15 +20,15 @@ public class Pista {
     @JoinColumn(name = "FK_DISCO")
     private Disco disco;
 
-    @ManyToMany(mappedBy = "pistas")
-    private List<Artista> artistas;
+//    @ManyToMany(mappedBy = "pistas")
+//    private List<Artista> artistas;
 
     public Pista(String nombre, String duracion, String letra) {
         this.nombre = nombre;
         this.duracion = duracion;
         this.letra = letra;
         this.disco = null;
-        this.artistas = new ArrayList<>();
+//        this.artistas = new ArrayList<>();
     }
 
     public Pista() {
@@ -59,22 +59,22 @@ public class Pista {
         this.disco = disco;
     }
 
-    public List<Artista> getArtistas() {
-        return artistas;
-    }
+//    public List<Artista> getArtistas() {
+//        return artistas;
+//    }
 
-    public void setArtistas(List<Artista> artistas) {
-        this.artistas = artistas;
-    }
+//    public void setArtistas(List<Artista> artistas) {
+//        this.artistas = artistas;
+//    }
 
     @Override
     public String toString() {
-        return "Pista \n" +
-                "idPista=" + idPista + "\n" +
-                "Nombre='" + nombre + '\'' + "\n" +
-                "Duracion='" + duracion + '\'' + "\n" +
-                "Letra='" + letra + '\'' + "\n" +
-                "Disco= '" + disco + '\''+"\n"+
-                "Artista= "+ this.artistas.toString();
+        return "\n     Pista \n" +
+                "      idPista=" + idPista + "\n" +
+                "      Nombre='" + nombre + '\'' + "\n" +
+                "      Duracion='" + duracion + '\'' + "\n" +
+                "      Letra='" + letra + '\'' + "\n" ;
+//                "Disco= '" + disco + '\''+"\n";
+//                "Artista= "+ this.artistas.toString();
     }
 }

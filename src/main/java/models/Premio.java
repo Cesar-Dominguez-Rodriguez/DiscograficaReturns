@@ -17,7 +17,8 @@ public class Premio {
     private String material;
     private int anhoFundacion;
 
-    @ManyToMany(mappedBy = "premios")
+    @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+    @JoinTable(name="pre_art",joinColumns = @JoinColumn(name="idpremio"),inverseJoinColumns = @JoinColumn(name= "idartista"))
     private List<Artista> artistas;
 
     public Premio(){

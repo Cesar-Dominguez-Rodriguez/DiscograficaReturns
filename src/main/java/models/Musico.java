@@ -38,7 +38,7 @@ public class Musico extends Artista{
                 " Salario = " + super.getSalario() +
                 " EstiloMusical = '" + super.getEstiloMusical() + '\'' +
                 " Discos = " + super.getDiscos() +
-                " Pistas = " + super.getPistas() +
+//                " Pistas = " + super.getPistas() +
                 " Premios = " + super.getPremios() +
                 " Instrumento=" + instrumento +
                 '}';

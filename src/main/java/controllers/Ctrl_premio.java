@@ -1,7 +1,12 @@
 package controllers;
 
+import models.Artista;
+import models.DAO.CantanteDAO;
+import models.DAO.MusicoDAO;
 import models.Premio;
 import models.DAO.PremioDAO;
+import views.Vsta_cantante;
+import views.Vsta_musico;
 import views.Vsta_premio;
 
 import java.util.List;
@@ -9,9 +14,18 @@ import java.util.List;
 public class Ctrl_premio {
 
     private Vsta_premio vista;
+    private Vsta_cantante vsta_cantante;
+    private Vsta_musico vsta_musico;
+    private CantanteDAO cantanteDAO;
+    private MusicoDAO musicoDAO;
 
     public Ctrl_premio() {
         vista = new Vsta_premio();
+        vsta_cantante = new Vsta_cantante();
+        vsta_musico = new Vsta_musico();
+        cantanteDAO = new CantanteDAO();
+        musicoDAO = new MusicoDAO();
+
     }
 
     public void ctrl(int option) {
@@ -48,6 +62,7 @@ public class Ctrl_premio {
                 vista.pedirMaterial(),
                 vista.pedirAnhoFundacion()
         );
+        System.out.println("Premio - anhadirPremio ->"+p);
         PremioDAO premioDAO = new PremioDAO();
         premioDAO.anhadir(p);
     }
@@ -80,6 +95,23 @@ public class Ctrl_premio {
                 break;
             case 2:
                 premio.setDinero(vista.pedirDinero());
+                break;
+            case 3:
+                int opcion= vista.tipoDeArtista();
+                switch(opcion){
+                    case 1:
+                        System.out.println(premio.getArtistas());
+                        List<Artista> cantantes= premio.getArtistas();
+                        cantantes.add(cantanteDAO.obtener(vsta_cantante.pedirNombreArtistico()));
+                        premio.setArtistas(cantantes);
+                        break;
+                    case 2:
+                        List<Artista> musicos= premio.getArtistas();
+                        musicos.add(musicoDAO.obtener(vsta_musico.pedirNombreArtistico()));
+                        premio.setArtistas(musicos);
+                    break;
+                }
+
                 break;
             case 0:
                 break;

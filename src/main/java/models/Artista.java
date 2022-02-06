@@ -29,12 +29,11 @@ public abstract class Artista {
     @OneToMany(mappedBy = "artista", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     private List<Disco> discos;
 
-    @ManyToMany(cascade = {CascadeType.ALL})
-    @JoinTable(name="pist_art",joinColumns = @JoinColumn(name="idartista"),inverseJoinColumns = @JoinColumn(name= "idpista"))
-    private List<Pista> pistas;
+//    @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+//    @JoinTable(name="pist_art",joinColumns = @JoinColumn(name="idartista"),inverseJoinColumns = @JoinColumn(name= "idpista"))
+//    private List<Pista> pistas;
 
-    @ManyToMany(cascade = {CascadeType.ALL})
-    @JoinTable(name="pre_art",joinColumns = @JoinColumn(name="idartista"),inverseJoinColumns = @JoinColumn(name= "idpremio"))
+    @ManyToMany(mappedBy = "artistas")
     private List<Premio> premios;
 
     public Artista(String dni, String nombre, String nombreArtistico, float salario, String estiloMusical) {
@@ -43,9 +42,9 @@ public abstract class Artista {
         this.nombreArtistico = nombreArtistico;
         this.salario = salario;
         this.estiloMusical = estiloMusical;
-        this.discos = new ArrayList<Disco>();
-        this.pistas = new ArrayList<Pista>();
-        this.premios = new ArrayList<Premio>();
+        this.discos = new ArrayList<>();
+//        this.pistas = new ArrayList<Pista>();
+        this.premios = new ArrayList<>();
     }
 
     public Artista() {
@@ -103,13 +102,13 @@ public abstract class Artista {
         this.discos = discos;
     }
 
-    public List<Pista> getPistas() {
-        return pistas;
-    }
-
-    public void setPistas(List<Pista> pistas) {
-        this.pistas = pistas;
-    }
+//    public List<Pista> getPistas() {
+//        return pistas;
+//    }
+//
+//    public void setPistas(List<Pista> pistas) {
+//        this.pistas = pistas;
+//    }
 
     public List<Premio> getPremios() {
         return premios;

@@ -34,7 +34,7 @@ public class Cantante extends Artista{
                 "  Salario: " + super.getSalario() + "\n" +
                 "  Estilo musical: " + super.getEstiloMusical() + '\n' +
                 "  Discos:  (" + super.getDiscos() +") \n"+
-                "  Pistas:  (" + super.getPistas() +") \n"+
+//                "  Pistas:  (" + super.getPistas() +") \n"+
                 "  Premios: (" + super.getPremios() +") \n"+
                 "  Voz: " + voz + "\n\n";
     }
