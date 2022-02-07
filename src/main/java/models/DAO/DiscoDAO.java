@@ -46,7 +46,7 @@ public class DiscoDAO implements DAO<Disco> {
     @Override
     public void actualizar(Disco d) {
         String sentencia= "update Disco " +
-                "set nombre= '"+d.getNombre()+"', artista= "+d.getArtista()+", pistas="+d.getPistas();
+                "set nombre= '"+d.getNombre()+"', artista= "+d.getArtista()+", pistas="+d.getPistas()+" Where idDisco="+d.getIdDisco();
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         Query query= em.createQuery(sentencia);

@@ -47,7 +47,7 @@ public class PremioDAO implements DAO<Premio> {
 //                "', dinero= "+p.getDinero()+", artistas= "+p.getArtistas();
         String sentencia= "update Premio " +
                 "set nombre= '"+p.getNombre()+
-                "', dinero= "+p.getDinero();
+                "', dinero= "+p.getDinero()+" where idPremio="+p.getIdPremio();
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         Query query= em.createQuery(sentencia);

@@ -29,8 +29,9 @@ public class Vsta_cantante implements Vsta_Pedir_Por_Datos{
             "2. Nombre\n" +
             "3. Nombre Artistico\n" +
             "4. salario\n" +
-            "5. voz\n" +
-            "6. Premios\n" +
+            "5. estilo\n" +
+            "6. voz\n" +
+            "7. Premios\n" +
             "0. Cancelar\n");
 
     }

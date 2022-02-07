@@ -47,7 +47,7 @@ public class PistaDAO implements DAO<Pista> {
                 "set nombre= '"+p.getNombre()+"', disco="+p.getDisco()+
                 ", artistas=  "+p.getArtistas();*/
         String sentencia= "update Pista " +
-                "set nombre= '"+p.getNombre()+"', disco="+p.getDisco().getIdDisco();
+                "set nombre= '"+p.getNombre()+"', disco="+p.getDisco().getIdDisco()+" where idPista="+p.getIdPista();
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();

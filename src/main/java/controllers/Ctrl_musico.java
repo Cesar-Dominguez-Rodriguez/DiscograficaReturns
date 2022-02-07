@@ -65,7 +65,7 @@ public class Ctrl_musico {
 
     public void modificarMusico() {
         MusicoDAO musicoDAO = new MusicoDAO();
-        Musico m = (Musico) musicoDAO.obtener(vista.pedirNombreArtistico());
+        Musico m = musicoDAO.obtener(vista.pedirNombreArtistico());
         modificarAtributoMusico(m);
         musicoDAO.actualizar(m);
     }
@@ -98,9 +98,12 @@ public class Ctrl_musico {
                 musico.setSalario(vista.pedirSalario());
                 break;
             case 5:
-                musico.setInstrumento(vista.pedirInstrumento());
+                musico.setEstiloMusical(vista.pedirEstilo());
                 break;
             case 6:
+                musico.setInstrumento(vista.pedirInstrumento());
+                break;
+            case 7:
                 PremioDAO premioDAO = new PremioDAO();
                 switch (vista_menu.menuPremioCase6()) {
                     case 1:

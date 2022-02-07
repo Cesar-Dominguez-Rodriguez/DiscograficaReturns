@@ -137,9 +137,12 @@ public class Ctrl_cantante {
                 cantante.setSalario(vista.pedirSalario());
                 break;
             case 5:
-                cantante.setVoz(seleccionDeVoz());
+                cantante.setEstiloMusical(vista.pedirEstilo());
                 break;
             case 6:
+                cantante.setVoz(seleccionDeVoz());
+                break;
+            case 7:
                 PremioDAO premioDAO = new PremioDAO();
                 switch (vista_menu.menuPremioCase6()) {
                     case 1:

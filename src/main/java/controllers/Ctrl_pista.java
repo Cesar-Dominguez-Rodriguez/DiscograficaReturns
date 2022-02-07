@@ -66,7 +66,6 @@ public class Ctrl_pista {
     public void modificarPista() {
         PistaDAO pistaDAO = new PistaDAO();
         Pista p = pistaDAO.obtener(vista.pedirNombre());
-        System.out.println(p.toString());
         modificarAtributoPista(p);
         pistaDAO.actualizar(p);
     }
@@ -97,7 +96,7 @@ public class Ctrl_pista {
         Vsta_musico vsta_musico = new Vsta_musico();
         switch (vista.modificarAtributo()) {
             case 1:
-                pista.setNombre(vista.pedirNombre());
+                    pista.setNombre(vista.pedirNombre());
                 break;
             case 2:
                 int opcionActionDisco = vista.actionDisco();

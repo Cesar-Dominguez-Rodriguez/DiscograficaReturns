@@ -15,7 +15,9 @@ public class Vsta_Menu implements Vsta_Pedir_Por_Datos {
                 "   3. Disco\n" +
                 "   4. Pista\n" +
                 "   5. Premio\n" +
-                "   0. Salir");
+                "   0. Salir\n" +
+                "  Extra\n" +
+                "   6. models.Consultas\n");
     }
 
 
@@ -77,6 +79,14 @@ public class Vsta_Menu implements Vsta_Pedir_Por_Datos {
                 "  0. Volver\n");
     }
 
+    public int menuConsultas(){
+        return pedirEntero("Elige que consulta realizar\n" +
+                "1 Numero de Canciones por artista" +
+                "2 " +
+                "3" +
+                "4" +
+                "5");
+    }
     /// Peticion de datos por tipo //////
 
     @Override

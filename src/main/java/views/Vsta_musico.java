@@ -14,7 +14,8 @@ public class Vsta_musico implements Vsta_Pedir_Por_Datos{
                 "3. Nombre Artistico\n" +
                 "4. salario\n" +
                 "5. instrumento\n" +
-                "6. Premios\n");
+                "6. instrumento\n" +
+                "7. Premios\n");
 
     }
 
