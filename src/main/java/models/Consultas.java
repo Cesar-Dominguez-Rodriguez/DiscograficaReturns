@@ -21,4 +21,16 @@ public class Consultas {
 
 
     };
+
+    public void albumsDeLaBase(){
+
+    }
+
+    public void albumsOrdenadosPorFecha(){}
+
+    public void artistasPorGenero(){}
+
+    public void artistasQueMasDineroGanaronConPremios(){}
+
+    public void agrumarArtistasPorRegistroDeVoz(){}
 }

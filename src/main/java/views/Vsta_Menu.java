@@ -17,7 +17,7 @@ public class Vsta_Menu implements Vsta_Pedir_Por_Datos {
                 "   5. Premio\n" +
                 "   0. Salir\n" +
                 "  Extra\n" +
-                "   6. models.Consultas\n");
+                "   6. Consultas\n");
     }
 
 
