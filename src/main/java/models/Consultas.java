@@ -22,13 +22,11 @@ public class Consultas {
 
     };
 
-    public void albumsDeLaBase(){
-
-    }
+    public void albumsDeLaBase(){}
 
     public void albumsOrdenadosPorFecha(){}
 
-    public void artistasPorGenero(){}
+    public void artistasPorEstilo(){}
 
     public void artistasQueMasDineroGanaronConPremios(){}
 
