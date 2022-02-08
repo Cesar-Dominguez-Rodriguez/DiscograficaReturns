@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import java.util.List;
 
 public class Consultas {
     private EntityManagerFactory emf;
@@ -14,21 +15,54 @@ public class Consultas {
     }
 
     public void cantidadDeCanciones(){
-        EntityManager em = emf.createEntityManager();
-        DiscoDAO discoDAO= new DiscoDAO();
-        Query sentencia= em.createQuery("select p.nombre from Pista p where p.disco="+discoDAO.obtener("Sabrina Carpenter"));
-        sentencia.executeUpdate();
-
-
+        try {
+            EntityManager em = emf.createEntityManager();
+            em.getTransaction().begin();
+            Query sentencia= em.createQuery("select p.nombre from Pista p");
+            sentencia.executeUpdate();
+            em.getTransaction().commit();
+            List resultado = sentencia.getResultList();
+            for (Object a : resultado){
+                System.out.println(a);
+            }
+        }catch (Exception e){
+            System.out.println("Error: "+e);
+        }
     };
 
-    public void albumsDeLaBase(){}
+    public void discosOrdenadosPorFecha(){
+        EntityManager em = emf.createEntityManager();
+        Query sentencia= em.createQuery("select d from Disco as d order by d.anhoSalida");
+        sentencia.executeUpdate();
+        List resultado = sentencia.getResultList();
+        for (Object a : resultado){
+            System.out.println(a);
+        }
+    }
 
-    public void albumsOrdenadosPorFecha(){}
+    public void artistasPorEstilo(){
 
-    public void artistasPorEstilo(){}
+    }
 
-    public void artistasQueMasDineroGanaronConPremios(){}
+    public void artistasQueMasDineroGanaronConPremios(){
+        EntityManager em = emf.createEntityManager();
+        Query sentencia= em.createQuery("select p.artistas from Premio p order by p.dinero");
+        sentencia.executeUpdate();
+        List resultado = sentencia.getResultList();
+        for (Object a : resultado){
+            System.out.println(a);
+        }
+    }
 
-    public void agrumarArtistasPorRegistroDeVoz(){}
+    public void agruparArtistasPorRegistroDeVoz(){
+        EntityManager em = emf.createEntityManager();
+        Query sentencia= em.createQuery("select c.nombreArtistico from Cantante c order by c.voz");
+        sentencia.executeUpdate();
+        List resultado = sentencia.getResultList();
+        for (Object a : resultado){
+            System.out.println(a);
+        }
+
+
+    }
 }

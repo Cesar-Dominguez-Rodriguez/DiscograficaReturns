@@ -81,11 +81,11 @@ public class Vsta_Menu implements Vsta_Pedir_Por_Datos {
 
     public int menuConsultas(){
         return pedirEntero("Elige que consulta realizar\n" +
-                "1 Numero de Canciones por artista" +
-                "2 " +
-                "3" +
-                "4" +
-                "5");
+                "1 Numero de Canciones por artista\n" +
+                "2 \n" +
+                "3 \n" +
+                "4 \n" +
+                "5 \n");
     }
     /// Peticion de datos por tipo //////
 

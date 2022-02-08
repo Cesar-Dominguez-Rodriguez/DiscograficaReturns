@@ -4,17 +4,17 @@ import models.Consultas;
 
 public class Ctrl_consultas {
 
-    public void ctrl(int opcion){
-        switch (opcion){
+    public void ctrl(int opcion) {
+        Consultas consultas = new Consultas();
+        switch (opcion) {
             case 1:
-                Consultas consultas= new Consultas();
                 consultas.cantidadDeCanciones();
                 break;
             case 2:
-
+                consultas.discosOrdenadosPorFecha();
                 break;
             case 3:
-
+                consultas.artistasQueMasDineroGanaronConPremios();
                 break;
             case 4:
 

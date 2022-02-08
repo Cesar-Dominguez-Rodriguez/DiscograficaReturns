@@ -1,7 +1,6 @@
 package controllers;
 
 import views.Vsta_Menu;
-import views.Vsta_consultas;
 
 public class Ctrl_menu {
 
@@ -12,7 +11,6 @@ public class Ctrl_menu {
     private Ctrl_pista ctrl_pista;
     private Ctrl_premio ctrl_premio;
     private Ctrl_consultas ctrl_consultas;
-    private Vsta_consultas vsta_consultas;
 
     public Ctrl_menu() {
         vsta_menu= new Vsta_Menu();
@@ -22,7 +20,6 @@ public class Ctrl_menu {
         ctrl_pista = new Ctrl_pista();
         ctrl_premio = new Ctrl_premio();
         ctrl_consultas = new Ctrl_consultas();
-        vsta_consultas = new Vsta_consultas();
     }
 
     public void ejecucion() {
